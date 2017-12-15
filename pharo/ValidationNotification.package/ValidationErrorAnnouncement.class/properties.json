@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "ValidationAnnouncement",
+	"category" : "ValidationNotification",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ValidationErrorAnnouncement",
+	"type" : "normal"
+}
