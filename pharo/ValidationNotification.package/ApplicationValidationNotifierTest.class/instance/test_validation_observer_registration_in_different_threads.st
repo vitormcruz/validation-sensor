@@ -1,5 +1,5 @@
 tests
-testValidationObserverRegistrationInDifferentThreads
+test_validation_observer_registration_in_different_threads
 
 	| validationObserver result |
 	
