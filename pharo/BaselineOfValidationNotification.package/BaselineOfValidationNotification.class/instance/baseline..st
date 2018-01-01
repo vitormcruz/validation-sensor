@@ -7,13 +7,13 @@ baseline: spec
 		spec blessing: #'baseline'.
 		spec repository: 'github://vitormcruz/st_validation_notification/pharo'.
 		
-		spec project: 'LangExtensions Core' with: [ spec repository: 'github://vitormcruz/st_langextensions/pharo'; baseline: 'LangExtensions'; load: 'core' ].
+		spec baseline: 'LangExtensions' with: [ spec repository: 'github://vitormcruz/st_langextensions/pharo'; loads: #('core') ].
 		
-		spec package: 'ValidationNotification' with: [ spec requires: 'LangExtensions Core' ]. 
-		spec package: 'ValidationNotification-Tests' with: [ spec requires: 'ValidationNotification' ].
+		spec package: 'ValidationNotification-Core' with: [ spec requires: 'LangExtensions' ]. 
+		spec package: 'ValidationNotification-Tests' with: [ spec requires: 'ValidationNotification-Core' ].
 		
 		spec group: 'default' with: #('core' 'tests');
-			  group: 'core' with: #('ValidationNotification');
+			  group: 'core' with: #('ValidationNotification-Core');
 			  group: 'tests' with: #('ValidationNotification-Tests')
 			
 	].
