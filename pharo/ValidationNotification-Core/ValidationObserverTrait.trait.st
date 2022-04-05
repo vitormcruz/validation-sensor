@@ -3,7 +3,7 @@ ValidationObserverTrait
 "
 Trait {
 	#name : #ValidationObserverTrait,
-	#category : 'ValidationNotification-Core-ValidationNotification-Core'
+	#category : 'ValidationNotification-Core'
 }
 
 { #category : #'as yet unclassified' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #ValidationErrorAnnouncement,
 	#superclass : #ValidationAnnouncement,
-	#category : 'ValidationNotification-Core-ValidationNotification-Core'
+	#category : 'ValidationNotification-Core'
 }
 
 { #category : #'as yet unclassified' }

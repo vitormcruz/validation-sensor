@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'localAnnouncerFechBlock'
 	],
-	#category : 'ValidationNotification-Core-ValidationNotification-Core'
+	#category : 'ValidationNotification-Core'
 }
 
 { #category : #adding }

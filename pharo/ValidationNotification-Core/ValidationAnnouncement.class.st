@@ -1,5 +1,5 @@
 Class {
 	#name : #ValidationAnnouncement,
 	#superclass : #Announcement,
-	#category : 'ValidationNotification-Core-ValidationNotification-Core'
+	#category : 'ValidationNotification-Core'
 }
