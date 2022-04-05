@@ -1,5 +1,11 @@
-baselines
-baseline: spec 
+Class {
+	#name : #BaselineOfValidationNotification,
+	#superclass : #BaselineOf,
+	#category : 'BaselineOfValidationNotification'
+}
+
+{ #category : #baselines }
+BaselineOfValidationNotification >> baseline: spec [ 
     
 	<baseline>
         
@@ -18,3 +24,5 @@ baseline: spec
 			
 	].
 		
+
+]
