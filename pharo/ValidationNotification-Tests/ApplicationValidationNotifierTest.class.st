@@ -1,24 +1,11 @@
 Class {
 	#name : #ApplicationValidationNotifierTest,
 	#superclass : #TestCase,
-	#category : 'ValidationNotification-Tests'
+	#category : #'ValidationNotification-Tests'
 }
 
-{ #category : #tests }
-ApplicationValidationNotifierTest >> test_notification_with_one_observer [
-
-	| validationObserver |
-	
-	validationObserver := TestObserver new.
-	ApplicationValidationNotifier addValidationObserver: TestObserver new.
-	
-	
-	
-	self assertBlock: [ ApplicationValidationNotifier observers isNotEmpty ].
-]
-
-{ #category : #tests }
-ApplicationValidationNotifierTest >> test_registered_and_still_used_validation_observer [
+{ #category : #'tests - registration' }
+ApplicationValidationNotifierTest >> test_registered_validation_observer_and_still_used [
 
 	| validationObserver |
 	
@@ -27,8 +14,8 @@ ApplicationValidationNotifierTest >> test_registered_and_still_used_validation_o
 	self assertBlock: [ ApplicationValidationNotifier observers isNotEmpty ].
 ]
 
-{ #category : #tests }
-ApplicationValidationNotifierTest >> test_registered_but_unused_validation_observer [
+{ #category : #'tests - registration' }
+ApplicationValidationNotifierTest >> test_registered_validation_observer_but_unused [
 
 	ApplicationValidationNotifier addValidationObserver: TestObserver new.
 	
@@ -36,7 +23,7 @@ ApplicationValidationNotifierTest >> test_registered_but_unused_validation_obser
 						  		   ApplicationValidationNotifier observers isEmpty ] forAtMost: 1 second asMilliSeconds.
 ]
 
-{ #category : #tests }
+{ #category : #'tests - registration' }
 ApplicationValidationNotifierTest >> test_validation_observer_registration_in_different_threads [
 
 	| validationObserver result |
