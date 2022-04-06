@@ -1,9 +1,6 @@
 Class {
 	#name : #ApplicationValidationNotifier,
 	#superclass : #Object,
-	#classInstVars : [
-		'localAnnouncerFechBlock'
-	],
 	#category : 'ValidationNotification-Core'
 }
 
@@ -11,8 +8,14 @@ Class {
 ApplicationValidationNotifier class >> addValidationObserver: validationObserver [
 
 	ValidationAnnouncement subclasses do: [ :subclass | 
-		localAnnouncerFechBlock value value weak when: subclass send: subclass defaultSelectorListener to: validationObserver.
+		self announcer weak when: subclass send: subclass defaultSelectorListener to: validationObserver.
 	].
+]
+
+{ #category : #accessing }
+ApplicationValidationNotifier class >> announcer [
+
+	^ ProcessLocalObservers value
 ]
 
 { #category : #'validation execution' }
@@ -25,12 +28,6 @@ ApplicationValidationNotifier class >> executeValidation: validation namingIt: v
 
 { #category : #'validation execution' }
 ApplicationValidationNotifier class >> finishValidation [
-]
-
-{ #category : #initialization }
-ApplicationValidationNotifier class >> initialize [
-
-	localAnnouncerFechBlock := [ ProcessLocalObservers value ifNil: [ ProcessLocalObservers value: Announcer new ] ].
 ]
 
 { #category : #'validation execution' }
@@ -48,7 +45,7 @@ ApplicationValidationNotifier class >> issueMandatoryObligationNamed: aString fo
 { #category : #accessing }
 ApplicationValidationNotifier class >> observers [
 
-	^ Set newFrom: ((localAnnouncerFechBlock value value subscriptions subscriptions) collect: #subscriber).
+	^ Set newFrom: ((self announcer subscriptions subscriptions) collect: #subscriber).
 ]
 
 { #category : #removing }

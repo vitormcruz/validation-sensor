@@ -4,5 +4,15 @@ I store a local process list of validation observers interested in validation is
 Class {
 	#name : #ProcessLocalObservers,
 	#superclass : #ProcessLocalVariable,
-	#category : 'ValidationNotification-Core'
+	#category : #'ValidationNotification-Core'
 }
+
+{ #category : #accessing }
+ProcessLocalObservers >> value [
+
+	^ super value ifNil: [ 
+		self value: Announcer new.
+		self value
+	].
+
+]
