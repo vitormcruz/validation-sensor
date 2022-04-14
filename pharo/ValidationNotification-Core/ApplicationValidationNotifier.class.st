@@ -7,8 +7,10 @@ Class {
 { #category : #adding }
 ApplicationValidationNotifier class >> addValidationObserver: validationObserver [
 
-	ValidationAnnouncement subclasses do: [ :subclass | 
-		self announcer weak when: subclass send: subclass defaultSelectorListener to: validationObserver.
+	ValidationAnnouncement subclasses do: [ :announcement | 
+		self announcer weak when: announcement 
+								 send: announcement defaultSelectorListener 
+								 to: validationObserver.
 	].
 ]
 
