@@ -28,7 +28,7 @@ TValidationObserver >> handleAnnouncer: announcement [
 TValidationObserver >> initialize [
 
 	super initialize.
-	ValidationAnnouncement addValidationObserver: self.
+	ApplicationValidationNotifier addValidationObserver: self.
 
 
 ]
