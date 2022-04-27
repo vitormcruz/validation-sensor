@@ -10,10 +10,32 @@ Class {
 	#category : #'ValidationNotification-Core'
 }
 
+{ #category : #testing }
+ValidationAnnoucerProcessLocal class >> isInheritable [
+	^ true
+]
+
+{ #category : #'instance creation' }
+ValidationAnnoucerProcessLocal class >> new [
+
+	"New will not return an instance as it should be used only to create my sole instance that should be used internally only"
+
+	soleInstance ifNotNil: [ ^ self ].
+	soleInstance := super new.
+
+]
+
+{ #category : #'class initialization' }
+ValidationAnnoucerProcessLocal class >> resetSoleInstance [
+
+	soleInstance := nil.
+	self new.
+]
+
 { #category : #accessing }
 ValidationAnnoucerProcessLocal class >> soleInstance [
 	
-	self error: 'You should not use my instance, Use my class messages instead'.
+	self error: 'You should not use my instance, use my class messages instead'.
 ]
 
 { #category : #accessing }
