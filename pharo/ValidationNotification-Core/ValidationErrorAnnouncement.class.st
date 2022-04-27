@@ -9,13 +9,6 @@ Class {
 	#category : #'ValidationNotification-Core'
 }
 
-{ #category : #'as yet unclassified' }
-ValidationErrorAnnouncement class >> defaultSelectorListener [
-
-	^#errorIssued:
-
-]
-
 { #category : #'instance creation' }
 ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject withinContext: context [
 
@@ -48,6 +41,12 @@ ValidationErrorAnnouncement >> forError: aString issuedBy: anObject withinContex
 	issuer := anObject.
 	context := aContext.
 	
+]
+
+{ #category : #converting }
+ValidationErrorAnnouncement >> isError [
+
+	^ true
 ]
 
 { #category : #accessing }

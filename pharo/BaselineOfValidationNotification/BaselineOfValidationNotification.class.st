@@ -15,6 +15,8 @@ BaselineOfValidationNotification >> baseline: spec [
 		
 	   spec baseline: 'LangExtensions' with: [ spec repository: 'gitlab://vitormcruz/sandbox-st:develop'; 
 								 		 loads: #(core) ].
+
+      spec baseline: 'Mocketry' with: [ spec repository: 'github://dionisiydk/Mocketry:v6.0.3' ].
 		
 		spec package: 'ValidationNotification-Core' with: [ spec requires: 'LangExtensions' ]. 
 		spec package: 'ValidationNotification-Tests' with: [ spec requires: 'ValidationNotification-Core' ].

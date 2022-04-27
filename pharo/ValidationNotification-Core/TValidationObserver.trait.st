@@ -6,12 +6,6 @@ Trait {
 	#category : #'ValidationNotification-Core'
 }
 
-{ #category : #'error-notification' }
-TValidationObserver >> compliedMandatoryObligation: mandatoryValidationName from: subject withinContext: aDictionary [
-
-	self subclassResponsibility.
-]
-
 { #category : #accessing }
 TValidationObserver >> errorArray [
 
@@ -19,7 +13,7 @@ TValidationObserver >> errorArray [
 ]
 
 { #category : #'announcement handling' }
-TValidationObserver >> handleAnnouncer: announcement [
+TValidationObserver >> errorIssued: announcement [
 
 	self subclassResponsibility. 
 ]
@@ -28,19 +22,13 @@ TValidationObserver >> handleAnnouncer: announcement [
 TValidationObserver >> initialize [
 
 	super initialize.
-	ApplicationValidationNotifier addValidationObserver: self.
+	ValidationAnnouncement addValidationObserver: self.
 
 
 ]
 
 { #category : #testing }
 TValidationObserver >> isValidationSuccessful [
-
-	self subclassResponsibility.
-]
-
-{ #category : #'error-notification' }
-TValidationObserver >> mandatoryObligation: mandatoryValidationName issuedFrom: subject withinContext: aDictionary [
 
 	self subclassResponsibility.
 ]

@@ -20,6 +20,12 @@ SimpleValidationObserver >> errorArray [
 	^ validationNotifications collect: #asValidationErrorRow.
 ]
 
+{ #category : #'announcement handling' }
+SimpleValidationObserver >> errorIssued: validationAnnouncement [
+
+	validationNotifications add: validationAnnouncement.
+]
+
 { #category : #accessing }
 SimpleValidationObserver >> errors [
 	"Return all current errors"
@@ -44,12 +50,6 @@ SimpleValidationObserver >> execute: aBlockClosureUnderValidation onValidationSu
 	
 	result := aBlockClosureUnderValidation value.
 	self onValidationSucess: [aSuccessBlockClosure cull: result] onValidationError: anErrorBlockClosure 
-]
-
-{ #category : #'announcement handling' }
-SimpleValidationObserver >> handleAnnouncer: validationAnnouncement [
-
-	validationNotifications add: validationAnnouncement.
 ]
 
 { #category : #initialization }
