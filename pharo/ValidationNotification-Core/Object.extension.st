@@ -14,16 +14,8 @@ Object >> failOnCreationFailed [
 { #category : #'*ValidationNotification-Core' }
 Object >> issueError: aValidationError [
 
-	self issueError: aValidationError 
-		  withinContext: {} asDictionary
-]
-
-{ #category : #'*ValidationNotification-Core' }
-Object >> issueError: aValidationError withinContext: aContext [
-
-	ValidationAnnouncement announcer announce: (ValidationErrorAnnouncement newForError: aValidationError 
-																								 issuedBy: self 
-																								 withinContext: aContext).
+	ValidationAnnoucer issue: (ValidationErrorAnnouncement newForError: aValidationError 
+																		   issuedBy: self).
 ]
 
 { #category : #'*ValidationNotification-Core' }

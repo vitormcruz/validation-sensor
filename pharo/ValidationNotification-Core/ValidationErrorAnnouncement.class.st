@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : #'instance creation' }
+ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject [
+
+	^ self new forError: aString 
+				  issuedBy: anObject.
+]
+
+{ #category : #'instance creation' }
 ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject withinContext: context [
 
 	^ self new forError: aString 
@@ -32,6 +39,14 @@ ValidationErrorAnnouncement >> context [
 { #category : #accessing }
 ValidationErrorAnnouncement >> errorMessage [
 	^ errorMessage
+]
+
+{ #category : #'instance creation' }
+ValidationErrorAnnouncement >> forError: aString issuedBy: anObject [
+
+	errorMessage := aString.
+	issuer := anObject.
+	
 ]
 
 { #category : #'instance creation' }

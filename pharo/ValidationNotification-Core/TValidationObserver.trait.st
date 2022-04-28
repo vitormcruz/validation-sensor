@@ -22,7 +22,7 @@ TValidationObserver >> errorIssued: announcement [
 TValidationObserver >> initialize [
 
 	super initialize.
-	ValidationAnnouncement addValidationObserver: self.
+	ValidationAnnoucer addValidationObserver: self.
 
 
 ]
