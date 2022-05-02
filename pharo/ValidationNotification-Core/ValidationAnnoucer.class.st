@@ -20,6 +20,12 @@ ValidationAnnoucer class >> addValidationObserver: validationObserver [
 	].
 ]
 
+{ #category : #accessing }
+ValidationAnnoucer class >> announce: validationAnnouncement [
+
+	soleInstance value announce: validationAnnouncement.
+]
+
 { #category : #'validation execution' }
 ValidationAnnoucer class >> complyMandatoryObligationNamed: aString for: aSubjectObject inContextOf: aDictionary [
 ]
@@ -30,12 +36,6 @@ ValidationAnnoucer class >> executeValidation: validation namingIt: validationNa
 
 { #category : #'validation execution' }
 ValidationAnnoucer class >> finishValidation [
-]
-
-{ #category : #accessing }
-ValidationAnnoucer class >> issue: validationAnnouncement [
-
-	soleInstance value announce: validationAnnouncement.
 ]
 
 { #category : #'validation execution' }
@@ -62,7 +62,6 @@ ValidationAnnoucer class >> new [
 { #category : #accessing }
 ValidationAnnoucer class >> observers [
 
- 	Transcript show: 'Calling observers'; cr. 
 	^ Set newFrom: ((soleInstance value subscriptions subscriptions) collect: #subscriber).
 ]
 

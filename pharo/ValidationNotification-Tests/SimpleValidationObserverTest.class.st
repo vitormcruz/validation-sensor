@@ -27,6 +27,6 @@ SimpleValidationObserverTest >> test_errors_with_non_error_notification [
 	| validationAnnMock |
 	
 	validationAnnMock := MockObject new on: #isError respond: false.
-	ValidationAnnouncement announcer announce: validationAnnMock.
+	ValidationAnnoucer announce: validationAnnMock.
 	self assert: simpleValidationObserver errors isEmpty
 ]
