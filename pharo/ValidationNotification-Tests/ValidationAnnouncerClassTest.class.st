@@ -21,7 +21,7 @@ ValidationAnnouncerClassTest >> test_issue_one_error [
 { #category : #tests }
 ValidationAnnouncerClassTest >> test_new_return_self [
 
-	self assert: ValidationAnnoucer new equals: ValidationAnnoucer.
+	self assert: ValidationAnnouncer new equals: ValidationAnnouncer.
 ]
 
 { #category : #'tests - registration' }
@@ -30,7 +30,7 @@ ValidationAnnouncerClassTest >> test_registered_validation_observer_and_still_us
 	| validationObserver |
 	
 	validationObserver := TestObserver new. "Hold instance so that GC cannot reclaim it."
-	self assertBlock: [ ValidationAnnoucer observers isNotEmpty ].
+	self assertBlock: [ ValidationAnnouncer observers isNotEmpty ].
 ]
 
 { #category : #'tests - registration' }
@@ -39,7 +39,7 @@ ValidationAnnouncerClassTest >> test_registered_validation_observer_but_unused [
 	TestObserver new.
 	
 	self assertUntilTrue: [ Smalltalk garbageCollect.
-						  		   ValidationAnnoucer observers isEmpty ] forAtMost: 1 second asMilliSeconds.
+						  		   ValidationAnnouncer observers isEmpty ] forAtMost: 1 second asMilliSeconds.
 ]
 
 { #category : #tests }
@@ -47,18 +47,18 @@ ValidationAnnouncerClassTest >> test_resetSoleInstance [
 
 	| previousInstance newInstance |
 	
-	previousInstance := ValidationAnnoucer soleInstanceForTest.
-	ValidationAnnoucer resetSoleInstance.
-	newInstance := ValidationAnnoucer soleInstanceForTest.
+	previousInstance := ValidationAnnouncer soleInstanceForTest.
+	ValidationAnnouncer resetSoleInstance.
+	newInstance := ValidationAnnouncer soleInstanceForTest.
 	
-	self assert: newInstance class equals: ValidationAnnoucer.
+	self assert: newInstance class equals: ValidationAnnouncer.
 	self deny: newInstance identicalTo: previousInstance.
 ]
 
 { #category : #tests }
 ValidationAnnouncerClassTest >> test_soleInstance_should_render_an_error [
 
-	self should: [ ValidationAnnoucer soleInstance ] 
+	self should: [ ValidationAnnouncer soleInstance ] 
 		  raise: Error 
 		  withExceptionDo: [ :ex | self assert: ex messageText equals: 'You should not use my instance, use my class messages instead' ].
 ]
@@ -70,10 +70,10 @@ ValidationAnnouncerClassTest >> test_validation_observer_registration_in_differe
 	
 	validationObserver := TestObserver new.
 	
-	[ result := ValidationAnnoucer observers isEmpty ] forkAndWait.
+	[ result := ValidationAnnouncer observers isEmpty ] forkAndWait.
 
 	
    self assert: result description: 'Observers should be different across processes, but the new process do not have an empty list of observers'.
-	self assert: (ValidationAnnoucer observers includes: validationObserver) 
+	self assert: (ValidationAnnouncer observers includes: validationObserver) 
 		  description: 'The expected validation observer was not found in the current process'.
 ]

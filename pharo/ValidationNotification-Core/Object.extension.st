@@ -14,7 +14,7 @@ Object >> failOnCreationFailed [
 { #category : #'*ValidationNotification-Core' }
 Object >> issueError: aValidationError [
 
-	ValidationAnnoucer announce: (ValidationErrorAnnouncement newForError: aValidationError 
+	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
 																		   issuedBy: self).
 ]
 

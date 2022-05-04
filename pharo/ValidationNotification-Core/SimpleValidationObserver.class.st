@@ -4,7 +4,7 @@ I autoregister me as a listener for errors and simply store all the errors issue
 Class {
 	#name : #SimpleValidationObserver,
 	#superclass : #Object,
-	#traits : 'TValidationObserver @ {#validationInitialize->#initialize}',
+	#traits : 'TValidationObserver',
 	#classTraits : 'TValidationObserver classTrait',
 	#instVars : [
 		'validationNotifications'
@@ -23,7 +23,7 @@ SimpleValidationObserver >> errorArray [
 { #category : #'announcement handling' }
 SimpleValidationObserver >> errorIssued: validationAnnouncement [
 
-	validationNotifications add: validationAnnouncement.
+	validationAnnouncement isError ifTrue: [ validationNotifications add: validationAnnouncement ].
 ]
 
 { #category : #accessing }
@@ -52,10 +52,10 @@ SimpleValidationObserver >> execute: aBlockClosureUnderValidation onValidationSu
 	self onValidationSucess: [aSuccessBlockClosure cull: result] onValidationError: anErrorBlockClosure 
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 SimpleValidationObserver >> initialize [
 
-	self validationInitialize.
+	self initializeValidationObserver.
 	validationNotifications := OrderedCollection new.
 ]
 

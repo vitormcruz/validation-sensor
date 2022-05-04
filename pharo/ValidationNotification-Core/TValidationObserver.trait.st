@@ -19,10 +19,10 @@ TValidationObserver >> errorIssued: announcement [
 ]
 
 { #category : #initialization }
-TValidationObserver >> initialize [
+TValidationObserver >> initializeValidationObserver [
 
 	super initialize.
-	ValidationAnnoucer addValidationObserver: self.
+	ValidationAnnouncer addValidationObserver: self.
 
 
 ]

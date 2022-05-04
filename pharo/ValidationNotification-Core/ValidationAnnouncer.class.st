@@ -5,13 +5,13 @@ different context will have a different validation announcer so that validations
 
 "
 Class {
-	#name : #ValidationAnnoucer,
+	#name : #ValidationAnnouncer,
 	#superclass : #ProcessLocalVariable,
 	#category : #'ValidationNotification-Core'
 }
 
 { #category : #adding }
-ValidationAnnoucer class >> addValidationObserver: validationObserver [
+ValidationAnnouncer class >> addValidationObserver: validationObserver [
 
 	ValidationAnnouncement subclasses do: [ :announcement | 
 		(soleInstance value) weak when: announcement 
@@ -21,37 +21,37 @@ ValidationAnnoucer class >> addValidationObserver: validationObserver [
 ]
 
 { #category : #accessing }
-ValidationAnnoucer class >> announce: validationAnnouncement [
+ValidationAnnouncer class >> announce: validationAnnouncement [
 
 	soleInstance value announce: validationAnnouncement.
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> complyMandatoryObligationNamed: aString for: aSubjectObject inContextOf: aDictionary [
+ValidationAnnouncer class >> complyMandatoryObligationNamed: aString for: aSubjectObject inContextOf: aDictionary [
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> executeValidation: validation namingIt: validationName [
+ValidationAnnouncer class >> executeValidation: validation namingIt: validationName [
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> finishValidation [
+ValidationAnnouncer class >> finishValidation [
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> issueError: aString forSubject: anObject inContextOf: aDictionary [
+ValidationAnnouncer class >> issueError: aString forSubject: anObject inContextOf: aDictionary [
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> issueError: anErrorString forSubject: anObject inContextOf: aDictionary asAnInstantValidationNamed: aNameString [
+ValidationAnnouncer class >> issueError: anErrorString forSubject: anObject inContextOf: aDictionary asAnInstantValidationNamed: aNameString [
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> issueMandatoryObligationNamed: aString forSubject: anObject inContextOf: aDictionary [
+ValidationAnnouncer class >> issueMandatoryObligationNamed: aString forSubject: anObject inContextOf: aDictionary [
 ]
 
 { #category : #'instance creation' }
-ValidationAnnoucer class >> new [
+ValidationAnnouncer class >> new [
 
 	"New will not return an instance as it should be used only to create my sole instance that should be used internally only"
 	
@@ -60,44 +60,44 @@ ValidationAnnoucer class >> new [
 ]
 
 { #category : #accessing }
-ValidationAnnoucer class >> observers [
+ValidationAnnouncer class >> observers [
 
 	^ Set newFrom: ((soleInstance value subscriptions subscriptions) collect: #subscriber).
 ]
 
 { #category : #removing }
-ValidationAnnoucer class >> removeAllObservers [
+ValidationAnnouncer class >> removeAllObservers [
 ]
 
 { #category : #removing }
-ValidationAnnoucer class >> removeObserver: validationObserver [
+ValidationAnnouncer class >> removeObserver: validationObserver [
 ]
 
 { #category : #'class initialization' }
-ValidationAnnoucer class >> resetSoleInstance [
+ValidationAnnouncer class >> resetSoleInstance [
 
 	soleInstance := nil.
 	self new.
 ]
 
 { #category : #testing }
-ValidationAnnoucer class >> soleInstance [
+ValidationAnnouncer class >> soleInstance [
 	
 	self error: 'You should not use my instance, use my class messages instead'.
 ]
 
 { #category : #'validation execution' }
-ValidationAnnoucer class >> startValidationNamed: validationName [
+ValidationAnnouncer class >> startValidationNamed: validationName [
 ]
 
 { #category : #inheriting }
-ValidationAnnoucer >> installValue: anObject intoForked: newProcess from: ownerProcess [
+ValidationAnnouncer >> installValue: anObject intoForked: newProcess from: ownerProcess [
 
 	newProcess psValueAt: index put: Announcer new.
 ]
 
 { #category : #accessing }
-ValidationAnnoucer >> value [
+ValidationAnnouncer >> value [
 
 	^ super value ifNil: [ 
 		self value: Announcer new.

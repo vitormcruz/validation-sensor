@@ -15,18 +15,40 @@ SimpleValidationObserverTest >> setUp [
 	
 ]
 
-{ #category : #tests }
+{ #category : #'tests - error notification' }
+SimpleValidationObserverTest >> test_errors_with_N_error_notification [
+
+	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
+   ValidationAnnouncer announce: ValidationErrorAnnouncement new.
+	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
+	self assert: simpleValidationObserver errors size equals: 3.
+]
+
+{ #category : #'tests - error notification' }
+SimpleValidationObserverTest >> test_errors_with_N_non_error_notification [
+
+	ValidationAnnouncer announce: StubNonErrorValAnn new.
+	ValidationAnnouncer announce: StubNonErrorValAnn new.
+	ValidationAnnouncer announce: StubNonErrorValAnn new.
+	self assert: simpleValidationObserver errors isEmpty
+]
+
+{ #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_no_notification [
 
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
-{ #category : #tests }
+{ #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_non_error_notification [
 
-	| validationAnnMock |
-	
-	validationAnnMock := MockObject new on: #isError respond: false.
-	ValidationAnnoucer announce: validationAnnMock.
+	ValidationAnnouncer announce: StubNonErrorValAnn new.
 	self assert: simpleValidationObserver errors isEmpty
+]
+
+{ #category : #'tests - error notification' }
+SimpleValidationObserverTest >> test_errors_with_one_error_notification [
+
+	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
+	self assert: simpleValidationObserver errors size equals: 1.
 ]
