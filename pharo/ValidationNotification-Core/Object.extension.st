@@ -15,7 +15,15 @@ Object >> failOnCreationFailed [
 Object >> issueError: aValidationError [
 
 	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
-																		   issuedBy: self).
+																		       issuedBy: self).
+]
+
+{ #category : #'*ValidationNotification-Core' }
+Object >> issueError: aValidationError withProps: props [ 
+
+	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
+																		       issuedBy: self
+																		       withProps: props).
 ]
 
 { #category : #'*ValidationNotification-Core' }

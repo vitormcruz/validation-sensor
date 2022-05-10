@@ -3,8 +3,7 @@ Class {
 	#superclass : #ValidationAnnouncement,
 	#instVars : [
 		'errorMessage',
-		'issuer',
-		'context'
+		'issuer'
 	],
 	#category : #'ValidationNotification-Core'
 }
@@ -17,16 +16,16 @@ ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject [
 ]
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject withinContext: context [
+ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject withProps: props [
 
 	^ self new forError: aString 
 				  issuedBy: anObject 
-				  withinContext: context.
+				  withProps: props.
 ]
 
 { #category : #accessing }
 ValidationErrorAnnouncement >> context [
-	^ context
+	^ properties
 	
 ]
 
@@ -41,14 +40,15 @@ ValidationErrorAnnouncement >> forError: aString issuedBy: anObject [
 	errorMessage := aString.
 	issuer := anObject.
 	
+	
 ]
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement >> forError: aString issuedBy: anObject withinContext: aContext [
+ValidationErrorAnnouncement >> forError: aString issuedBy: anObject withProps: props [
 
 	errorMessage := aString.
 	issuer := anObject.
-	context := aContext.
+	self properties: props.
 	
 ]
 
