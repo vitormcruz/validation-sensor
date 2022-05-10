@@ -24,26 +24,6 @@ ValidationAnnouncer class >> announce: validationAnnouncement [
 	soleInstance value announce: validationAnnouncement.
 ]
 
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> executeValidation: validation namingIt: validationName [
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> finishValidation [
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> issueError: aString forSubject: anObject inContextOf: aDictionary [
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> issueError: anErrorString forSubject: anObject inContextOf: aDictionary asAnInstantValidationNamed: aNameString [
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> issueMandatoryObligationNamed: aString forSubject: anObject inContextOf: aDictionary [
-]
-
 { #category : #'instance creation' }
 ValidationAnnouncer class >> new [
 
@@ -65,12 +45,7 @@ ValidationAnnouncer class >> removeAllObservers [
 	| ann |
 	
 	ann := (soleInstance value).
-	ann subscriptions 
-		 subscriptions do: [ :subscription | ann removeSubscription: subscription ].
-]
-
-{ #category : #removing }
-ValidationAnnouncer class >> removeObserver: validationObserver [
+	ann subscriptions reset.
 ]
 
 { #category : #'class initialization' }
@@ -84,10 +59,6 @@ ValidationAnnouncer class >> resetSoleInstance [
 ValidationAnnouncer class >> soleInstance [
 	
 	self error: 'You should not use my instance, use my class messages instead'.
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> startValidationNamed: validationName [
 ]
 
 { #category : #inheriting }

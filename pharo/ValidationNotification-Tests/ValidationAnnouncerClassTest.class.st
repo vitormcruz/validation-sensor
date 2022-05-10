@@ -30,8 +30,7 @@ ValidationAnnouncerClassTest >> test_N_registered_validation_observer_and_remove
 	validationObserver2 := TestObserver new. "Hold instance so that GC cannot reclaim it."
 	validationObserver3 := TestObserver new. "Hold instance so that GC cannot reclaim it."
 	ValidationAnnouncer removeAllObservers.
-	self assertUntilTrue: [ ValidationAnnouncer observers isEmpty ] 
-		  forAtMost: 500.
+	self assert:	ValidationAnnouncer observers isEmpty.
 ]
 
 { #category : #'tests - registration' }

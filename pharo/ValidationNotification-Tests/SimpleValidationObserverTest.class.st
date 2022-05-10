@@ -13,7 +13,7 @@ SimpleValidationObserverTest >> nonErrorValNotification [
 	| mock |
 	
 	mock := ValidationAnnouncement new.
-   mock stub isError willReturn: true.
+   mock stub isError willReturn: false.
 	^ mock
 ]
 
@@ -43,9 +43,9 @@ SimpleValidationObserverTest >> test_errors_with_N_error_notification [
 { #category : #tests }
 SimpleValidationObserverTest >> test_errors_with_N_non_error_notification [
 
-	ValidationAnnouncer announce: StubNonErrorValAnn new.
-	ValidationAnnouncer announce: StubNonErrorValAnn new.
-	ValidationAnnouncer announce: StubNonErrorValAnn new.
+	ValidationAnnouncer announce: self nonErrorValNotification.
+	ValidationAnnouncer announce: self nonErrorValNotification.
+	ValidationAnnouncer announce: self nonErrorValNotification.
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
@@ -58,7 +58,7 @@ SimpleValidationObserverTest >> test_errors_with_no_notification [
 { #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_non_error_notification [
 
-	ValidationAnnouncer announce: StubNonErrorValAnn new.
+	ValidationAnnouncer announce: (self nonErrorValNotification).
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
