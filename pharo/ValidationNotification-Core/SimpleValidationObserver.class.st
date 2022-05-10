@@ -13,20 +13,6 @@ Class {
 }
 
 { #category : #accessing }
-SimpleValidationObserver >> errorArray [
-	"Return all current errors as an array in the following format: {errorMessage. issuer. context.} "
-	
-	validationNotifications ifEmpty: [ ^ {  } ].
-	^ validationNotifications collect: #asValidationErrorRow.
-]
-
-{ #category : #'announcement handling' }
-SimpleValidationObserver >> errorIssued: validationAnnouncement [
-
-	validationAnnouncement isError ifTrue: [ validationNotifications add: validationAnnouncement ].
-]
-
-{ #category : #accessing }
 SimpleValidationObserver >> errors [
 	"Return all current errors"
 	
@@ -52,6 +38,12 @@ SimpleValidationObserver >> execute: aBlockClosureUnderValidation onValidationSu
 	self onValidationSucess: [aSuccessBlockClosure cull: result] onValidationError: anErrorBlockClosure 
 ]
 
+{ #category : #'announcement handling' }
+SimpleValidationObserver >> handleValidationAnn: validationAnnouncement [
+
+	validationAnnouncement isError ifTrue: [ validationNotifications add: validationAnnouncement ].
+]
+
 { #category : #'as yet unclassified' }
 SimpleValidationObserver >> initialize [
 
@@ -62,13 +54,13 @@ SimpleValidationObserver >> initialize [
 { #category : #testing }
 SimpleValidationObserver >> isValidationSuccessful [
 
-	^ self errorArray isEmpty.
+	^ self errors isEmpty.
 ]
 
 { #category : #'as yet unclassified' }
 SimpleValidationObserver >> onValidationError: aBlockClosure [
 
-	self isValidationSuccessful ifFalse: [aBlockClosure cull: self errorArray].
+	self isValidationSuccessful ifFalse: [aBlockClosure cull: self errors].
 
 
 ]

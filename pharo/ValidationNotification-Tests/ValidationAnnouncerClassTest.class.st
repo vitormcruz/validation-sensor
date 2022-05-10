@@ -4,6 +4,47 @@ Class {
 	#category : #'ValidationNotification-Tests'
 }
 
+{ #category : #running }
+ValidationAnnouncerClassTest >> setUp [
+	super setUp.
+	
+	Smalltalk garbageCollect. 
+]
+
+{ #category : #'tests - registration' }
+ValidationAnnouncerClassTest >> test_2_registered_validation_observer_and_still_used [
+
+	| validationObserver validationObserver2 |
+	
+	validationObserver := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	validationObserver2 := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	self assert: ValidationAnnouncer observers size equals: 2.
+]
+
+{ #category : #'tests - registration' }
+ValidationAnnouncerClassTest >> test_N_registered_validation_observer_and_remove_all [
+
+	| validationObserver validationObserver2 validationObserver3 |
+	
+	validationObserver := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	validationObserver2 := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	validationObserver3 := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	ValidationAnnouncer removeAllObservers.
+	self assertUntilTrue: [ ValidationAnnouncer observers isEmpty ] 
+		  forAtMost: 500.
+]
+
+{ #category : #'tests - registration' }
+ValidationAnnouncerClassTest >> test_N_registered_validation_observer_and_still_used [
+
+	| validationObserver validationObserver2 validationObserver3 |
+	
+	validationObserver := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	validationObserver2 := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	validationObserver3 := TestObserver new. "Hold instance so that GC cannot reclaim it."
+	self assert: ValidationAnnouncer observers size equals: 3.
+]
+
 { #category : #'tests - issuing errors' }
 ValidationAnnouncerClassTest >> test_issue_one_error [
 

@@ -13,21 +13,15 @@ Class {
 { #category : #adding }
 ValidationAnnouncer class >> addValidationObserver: validationObserver [
 
-	ValidationAnnouncement subclasses do: [ :announcement | 
-		(soleInstance value) weak when: announcement 
-								  send: #errorIssued: 
-								  to: validationObserver.
-	].
+	(soleInstance value) weak when: ValidationAnnouncement 
+									  send: #handleValidationAnn: 
+									  to: validationObserver.
 ]
 
 { #category : #accessing }
 ValidationAnnouncer class >> announce: validationAnnouncement [
 
 	soleInstance value announce: validationAnnouncement.
-]
-
-{ #category : #'validation execution' }
-ValidationAnnouncer class >> complyMandatoryObligationNamed: aString for: aSubjectObject inContextOf: aDictionary [
 ]
 
 { #category : #'validation execution' }
@@ -67,6 +61,12 @@ ValidationAnnouncer class >> observers [
 
 { #category : #removing }
 ValidationAnnouncer class >> removeAllObservers [
+
+	| ann |
+	
+	ann := (soleInstance value).
+	ann subscriptions 
+		 subscriptions do: [ :subscription | ann removeSubscription: subscription ].
 ]
 
 { #category : #removing }

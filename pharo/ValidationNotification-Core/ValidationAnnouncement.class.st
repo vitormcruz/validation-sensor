@@ -5,12 +5,6 @@ Class {
 }
 
 { #category : #converting }
-ValidationAnnouncement >> asValidationErrorRow [
-
-	self subclassResponsibility.
-]
-
-{ #category : #converting }
 ValidationAnnouncement >> isError [
 
 	self subclassResponsibility.

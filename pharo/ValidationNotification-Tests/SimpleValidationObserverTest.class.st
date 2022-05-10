@@ -7,6 +7,16 @@ Class {
 	#category : #'ValidationNotification-Tests'
 }
 
+{ #category : #'tests - support' }
+SimpleValidationObserverTest >> nonErrorValNotification [
+
+	| mock |
+	
+	mock := ValidationAnnouncement new.
+   mock stub isError willReturn: true.
+	^ mock
+]
+
 { #category : #running }
 SimpleValidationObserverTest >> setUp [
 	super setUp.
@@ -18,13 +28,19 @@ SimpleValidationObserverTest >> setUp [
 { #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_N_error_notification [
 
-	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
-   ValidationAnnouncer announce: ValidationErrorAnnouncement new.
-	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
-	self assert: simpleValidationObserver errors size equals: 3.
+	| valAnn1 valAnn2 valAnn3 |
+	
+	valAnn1 := ValidationErrorAnnouncement new.
+	valAnn2 := ValidationErrorAnnouncement new.
+	valAnn3 := ValidationErrorAnnouncement new.
+
+	ValidationAnnouncer announce: valAnn1.
+	ValidationAnnouncer announce: valAnn2.
+	ValidationAnnouncer announce: valAnn3.
+	self assert: simpleValidationObserver errors size equals: 3
 ]
 
-{ #category : #'tests - error notification' }
+{ #category : #tests }
 SimpleValidationObserverTest >> test_errors_with_N_non_error_notification [
 
 	ValidationAnnouncer announce: StubNonErrorValAnn new.

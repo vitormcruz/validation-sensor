@@ -6,14 +6,8 @@ Trait {
 	#category : #'ValidationNotification-Core'
 }
 
-{ #category : #accessing }
-TValidationObserver >> errorArray [
-
-	self subclassResponsibility.
-]
-
 { #category : #'announcement handling' }
-TValidationObserver >> errorIssued: announcement [
+TValidationObserver >> handleValidationAnn: announcement [
 
 	self subclassResponsibility. 
 ]
@@ -21,7 +15,6 @@ TValidationObserver >> errorIssued: announcement [
 { #category : #initialization }
 TValidationObserver >> initializeValidationObserver [
 
-	super initialize.
 	ValidationAnnouncer addValidationObserver: self.
 
 

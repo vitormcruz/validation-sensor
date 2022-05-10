@@ -24,12 +24,6 @@ ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject wit
 				  withinContext: context.
 ]
 
-{ #category : #converting }
-ValidationErrorAnnouncement >> asValidationErrorRow [
-
-	^ {errorMessage. issuer. context.}.
-]
-
 { #category : #accessing }
 ValidationErrorAnnouncement >> context [
 	^ context
