@@ -20,6 +20,7 @@ ValidationAnnouncementTest >> test_announce_N_errors [
 	self issueError: 'error message'.
 	self issueError: 'error message2'.
 	self issueError: 'error message3'.
+	
 	self assertCollection: (validationObserver errors collect: #errorMessage) 
 		  includesAll:	#('error message' 'error message2' 'error message3')
 ]
@@ -28,14 +29,35 @@ ValidationAnnouncementTest >> test_announce_N_errors [
 ValidationAnnouncementTest >> test_announce_error [
 
 	self issueError: 'error message'.
+	
 	self assertCollection: (validationObserver errors collect: #errorMessage) 
 		  includesAll:	#('error message')
+]
+
+{ #category : #tests }
+ValidationAnnouncementTest >> test_announce_error_in_group_validation [
+
+	| errorsFromGroup |
+	
+	self validationGroup: 'Validate Entity1' 
+		  do: [ 
+		  		self issueError: 'error message'.
+		  		self issueError: 'error message2'.
+		  		self issueError: 'error message3'.
+		  		self issueError: 'error message4'.
+		  ].
+	
+	errorsFromGroup := validationObserver errors select: [ :err | (err propAt: #validationGroup) = 'Validate Entity1' ].
+	
+	self assertCollection: (errorsFromGroup collect: #errorMessage) 
+		  includesAll:	#('error message' 'error message2' 'error message3' 'error message4').
 ]
 
 { #category : #tests }
 ValidationAnnouncementTest >> test_announce_error_with_prop [
 
 	self issueError: 'error message' withProps: { #field->'name' }.
+	
 	self assertCollection: (validationObserver errors collect: #errorMessage) 
 		  includesAll:	#('error message').
 			
@@ -46,6 +68,7 @@ ValidationAnnouncementTest >> test_announce_error_with_prop [
 ValidationAnnouncementTest >> test_announce_error_with_props [
 
 	self issueError: 'error message' withProps: { #field->'name'. #ctx1->'something'. #ctx2->'something2' }.
+	
 	self assertCollection: (validationObserver errors collect: #errorMessage) 
 		  includesAll:	#('error message').
 			

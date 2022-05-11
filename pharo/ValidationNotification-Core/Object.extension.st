@@ -14,8 +14,7 @@ Object >> failOnCreationFailed [
 { #category : #'*ValidationNotification-Core' }
 Object >> issueError: aValidationError [
 
-	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
-																		       issuedBy: self).
+	self issueError: aValidationError withProps: Dictionary new.
 ]
 
 { #category : #'*ValidationNotification-Core' }
@@ -23,11 +22,12 @@ Object >> issueError: aValidationError withProps: props [
 
 	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
 																		       issuedBy: self
-																		       withProps: props).
+																		       withProps: (props , ValidationPropsDynVar value)).
 ]
 
 { #category : #'*ValidationNotification-Core' }
-Object >> validate: aValidationBlock [
+Object >> validationGroup: aString do: aFullBlockClosure [ 
 
-	aValidationBlock value: self.
+	ValidationPropsDynVar value: { #validationGroup -> 'Validate Entity1' } asDictionary
+								 during: aFullBlockClosure
 ]

@@ -12,6 +12,7 @@ ValidationAnnouncement >> initialize [
 	
 	self class initializeSlots: self.
 	super initialize.
+	properties := Dictionary new.
 ]
 
 { #category : #converting }
@@ -29,5 +30,5 @@ ValidationAnnouncement >> propAt: aSymbol [
 { #category : #accessing }
 ValidationAnnouncement >> properties: props [
 
-	properties := props clone asDictionary.
+	properties addAll: props asDictionary.
 ]
