@@ -13,7 +13,7 @@ BaselineOfValidationNotification >> baseline: spec [
 		spec blessing: #'baseline'.
 		spec repository: 'github://vitormcruz/st_validation_notification:master/pharo'.
 		
-	   spec baseline: 'LangExtensions' with: [ spec repository: 'gitlab://vitormcruz/sandbox-st:develop'; 
+	   spec baseline: 'LangExtensions' with: [ spec repository: 'github://vitormcruz/sandbox-st:develop'; 
 								 		 loads: #(core) ].
 
       spec baseline: 'Mocketry' with: [ spec repository: 'github://dionisiydk/Mocketry:v7.0.1' ].
