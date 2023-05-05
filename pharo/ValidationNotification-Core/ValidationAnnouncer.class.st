@@ -1,7 +1,7 @@
 "
-I am used to make validations announcements (`ValidationAnnouncement`) through an `Announcer` stored in a `ProcessLocalVariable`. That way each process or 
-different context will have a different validation announcer so that validations made in different executions flows can be separated from each other.
+I am used to announce validations announcements (`ValidationAnnouncement`) and to register validations observers.
 
+Every registration is week, i.e., when the process in execution ends all references to observers are loosed and can be garbaged collect. 
 
 "
 Class {
@@ -24,13 +24,16 @@ ValidationAnnouncer class >> announce: validationAnnouncement [
 	soleInstance value announce: validationAnnouncement.
 ]
 
+{ #category : #initialization }
+ValidationAnnouncer class >> initialize [ 
+
+	self resetSoleInstance.
+]
+
 { #category : #'instance creation' }
 ValidationAnnouncer class >> new [
 
-	"New will not return an instance as it should be used only to create my sole instance that should be used internally only"
-	
-	soleInstance ifNotNil: [ ^ self ].
-	soleInstance := super new.
+	self error: 'Do not use ''new'', use my class methods instead'.
 ]
 
 { #category : #accessing }
@@ -51,8 +54,7 @@ ValidationAnnouncer class >> removeAllObservers [
 { #category : #'class initialization' }
 ValidationAnnouncer class >> resetSoleInstance [
 
-	soleInstance := nil.
-	self new.
+	soleInstance := super new.
 ]
 
 { #category : #testing }

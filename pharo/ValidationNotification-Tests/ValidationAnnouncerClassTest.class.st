@@ -59,9 +59,12 @@ ValidationAnnouncerClassTest >> test_issue_one_error [
 ]
 
 { #category : #tests }
-ValidationAnnouncerClassTest >> test_new_return_self [
+ValidationAnnouncerClassTest >> test_new_show_error [
 
-	self assert: ValidationAnnouncer new equals: ValidationAnnouncer.
+	self should: [ ValidationAnnouncer new ] 
+		raise: Error
+	  whoseDescriptionIncludes:  'Do not use ''new'', use my class methods instead' 
+		description: 'Did not raise error as expected'
 ]
 
 { #category : #'tests - registration' }
