@@ -1,6 +1,6 @@
 Class {
-	#name : #ValidationErrorAnnouncement,
-	#superclass : #ValidationAnnouncement,
+	#name : #ValidationErrorNotification,
+	#superclass : #ValidationNotification,
 	#instVars : [
 		'errorMessage',
 		'issuer'
@@ -9,14 +9,14 @@ Class {
 }
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject [
+ValidationErrorNotification class >> newForError: aString issuedBy: anObject [
 
 	^ self new forError: aString 
 				  issuedBy: anObject.
 ]
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject withProps: props [
+ValidationErrorNotification class >> newForError: aString issuedBy: anObject withProps: props [
 
 	^ self new forError: aString 
 				  issuedBy: anObject 
@@ -24,18 +24,18 @@ ValidationErrorAnnouncement class >> newForError: aString issuedBy: anObject wit
 ]
 
 { #category : #accessing }
-ValidationErrorAnnouncement >> context [
+ValidationErrorNotification >> context [
 	^ properties
 	
 ]
 
 { #category : #accessing }
-ValidationErrorAnnouncement >> errorMessage [
+ValidationErrorNotification >> errorMessage [
 	^ errorMessage
 ]
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement >> forError: aString issuedBy: anObject [
+ValidationErrorNotification >> forError: aString issuedBy: anObject [
 
 	errorMessage := aString.
 	issuer := anObject.
@@ -44,7 +44,7 @@ ValidationErrorAnnouncement >> forError: aString issuedBy: anObject [
 ]
 
 { #category : #'instance creation' }
-ValidationErrorAnnouncement >> forError: aString issuedBy: anObject withProps: props [
+ValidationErrorNotification >> forError: aString issuedBy: anObject withProps: props [
 
 	errorMessage := aString.
 	issuer := anObject.
@@ -53,12 +53,12 @@ ValidationErrorAnnouncement >> forError: aString issuedBy: anObject withProps: p
 ]
 
 { #category : #converting }
-ValidationErrorAnnouncement >> isError [
+ValidationErrorNotification >> isError [
 
 	^ true
 ]
 
 { #category : #accessing }
-ValidationErrorAnnouncement >> issuer [
+ValidationErrorNotification >> issuer [
 	^ issuer
 ]

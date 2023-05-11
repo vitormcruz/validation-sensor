@@ -1,5 +1,5 @@
 Class {
-	#name : #ValidationAnnouncementTest,
+	#name : #ValidationNotificationTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'validationObserver'
@@ -8,14 +8,14 @@ Class {
 }
 
 { #category : #running }
-ValidationAnnouncementTest >> setUp [
+ValidationNotificationTest >> setUp [
 	super setUp.
 	
-	validationObserver := TestObserver new.
+	validationObserver := TestObserver newRegistered.
 ]
 
 { #category : #tests }
-ValidationAnnouncementTest >> test_announce_N_errors [
+ValidationNotificationTest >> test_notify_N_errors [
 
 	self issueError: 'error message'.
 	self issueError: 'error message2'.
@@ -26,7 +26,7 @@ ValidationAnnouncementTest >> test_announce_N_errors [
 ]
 
 { #category : #tests }
-ValidationAnnouncementTest >> test_announce_error [
+ValidationNotificationTest >> test_notify_error [
 
 	self issueError: 'error message'.
 	
@@ -35,7 +35,7 @@ ValidationAnnouncementTest >> test_announce_error [
 ]
 
 { #category : #tests }
-ValidationAnnouncementTest >> test_announce_error_in_group_validation [
+ValidationNotificationTest >> test_notify_error_in_group_validation [
 
 	| errorsFromGroup |
 	
@@ -54,7 +54,7 @@ ValidationAnnouncementTest >> test_announce_error_in_group_validation [
 ]
 
 { #category : #tests }
-ValidationAnnouncementTest >> test_announce_error_with_prop [
+ValidationNotificationTest >> test_notify_error_with_prop [
 
 	self issueError: 'error message' withProps: { #field->'name' }.
 	
@@ -65,7 +65,7 @@ ValidationAnnouncementTest >> test_announce_error_with_prop [
 ]
 
 { #category : #tests }
-ValidationAnnouncementTest >> test_announce_error_with_props [
+ValidationNotificationTest >> test_notify_error_with_props [
 
 	self issueError: 'error message' withProps: { #field->'name'. #ctx1->'something'. #ctx2->'something2' }.
 	

@@ -12,6 +12,12 @@ Class {
 	#category : #'ValidationNotification-Core'
 }
 
+{ #category : #'instance creation' }
+SimpleValidationObserver class >> newRegistered [
+
+	^ self basicNew initializeRegisteringSelf.
+]
+
 { #category : #accessing }
 SimpleValidationObserver >> errors [
 	"Return all current errors"
@@ -47,8 +53,14 @@ SimpleValidationObserver >> handleValidationAnn: validationAnnouncement [
 { #category : #'as yet unclassified' }
 SimpleValidationObserver >> initialize [
 
-	self initializeValidationObserver.
 	validationNotifications := OrderedCollection new.
+]
+
+{ #category : #'as yet unclassified' }
+SimpleValidationObserver >> initializeRegisteringSelf [
+
+	self initialize.
+	self initializeValidationObserver.
 ]
 
 { #category : #testing }

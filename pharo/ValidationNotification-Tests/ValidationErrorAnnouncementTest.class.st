@@ -7,5 +7,5 @@ Class {
 { #category : #tests }
 ValidationErrorAnnouncementTest >> test_isError [
 
-	self assert: ValidationErrorAnnouncement new isError.
+	self assert: ValidationErrorNotification new isError.
 ]

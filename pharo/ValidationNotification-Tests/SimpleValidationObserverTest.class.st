@@ -12,7 +12,7 @@ SimpleValidationObserverTest >> nonErrorValNotification [
 
 	| mock |
 	
-	mock := ValidationAnnouncement new.
+	mock := ValidationNotification new.
    mock stub isError willReturn: false.
 	^ mock
 ]
@@ -21,7 +21,7 @@ SimpleValidationObserverTest >> nonErrorValNotification [
 SimpleValidationObserverTest >> setUp [
 	super setUp.
 	
-	simpleValidationObserver := TestObserver new.
+	simpleValidationObserver := TestObserver newRegistered.
 	
 ]
 
@@ -30,22 +30,22 @@ SimpleValidationObserverTest >> test_errors_with_N_error_notification [
 
 	| valAnn1 valAnn2 valAnn3 |
 	
-	valAnn1 := ValidationErrorAnnouncement new.
-	valAnn2 := ValidationErrorAnnouncement new.
-	valAnn3 := ValidationErrorAnnouncement new.
+	valAnn1 := ValidationErrorNotification new.
+	valAnn2 := ValidationErrorNotification new.
+	valAnn3 := ValidationErrorNotification new.
 
-	ValidationAnnouncer announce: valAnn1.
-	ValidationAnnouncer announce: valAnn2.
-	ValidationAnnouncer announce: valAnn3.
+	ValidationSensor announce: valAnn1.
+	ValidationSensor announce: valAnn2.
+	ValidationSensor announce: valAnn3.
 	self assert: simpleValidationObserver errors size equals: 3
 ]
 
 { #category : #tests }
 SimpleValidationObserverTest >> test_errors_with_N_non_error_notification [
 
-	ValidationAnnouncer announce: self nonErrorValNotification.
-	ValidationAnnouncer announce: self nonErrorValNotification.
-	ValidationAnnouncer announce: self nonErrorValNotification.
+	ValidationSensor announce: self nonErrorValNotification.
+	ValidationSensor announce: self nonErrorValNotification.
+	ValidationSensor announce: self nonErrorValNotification.
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
@@ -58,13 +58,13 @@ SimpleValidationObserverTest >> test_errors_with_no_notification [
 { #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_non_error_notification [
 
-	ValidationAnnouncer announce: (self nonErrorValNotification).
+	ValidationSensor announce: (self nonErrorValNotification).
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
 { #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_one_error_notification [
 
-	ValidationAnnouncer announce: ValidationErrorAnnouncement new.
+	ValidationSensor announce: ValidationErrorNotification new.
 	self assert: simpleValidationObserver errors size equals: 1.
 ]

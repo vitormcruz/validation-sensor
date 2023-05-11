@@ -15,7 +15,7 @@ TValidationObserver >> handleValidationAnn: announcement [
 { #category : #initialization }
 TValidationObserver >> initializeValidationObserver [
 
-	ValidationAnnouncer addValidationObserver: self.
+	ValidationSensor addValidationObserver: self.
 
 
 ]

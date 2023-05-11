@@ -20,7 +20,7 @@ Object >> issueError: aValidationError [
 { #category : #'*ValidationNotification-Core' }
 Object >> issueError: aValidationError withProps: props [ 
 
-	ValidationAnnouncer announce: (ValidationErrorAnnouncement newForError: aValidationError 
+	ValidationSensor announce: (ValidationErrorNotification newForError: aValidationError 
 																		       issuedBy: self
 																		       withProps: (props , ValidationPropsDynVar value)).
 ]

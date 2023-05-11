@@ -1,5 +1,5 @@
 Class {
-	#name : #ValidationAnnouncement,
+	#name : #ValidationNotification,
 	#superclass : #Announcement,
 	#instVars : [
 		'#properties => WriteOnceSlot'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #initialization }
-ValidationAnnouncement >> initialize [
+ValidationNotification >> initialize [
 	
 	self class initializeSlots: self.
 	super initialize.
@@ -16,19 +16,19 @@ ValidationAnnouncement >> initialize [
 ]
 
 { #category : #converting }
-ValidationAnnouncement >> isError [
+ValidationNotification >> isError [
 
 	self subclassResponsibility.
 ]
 
 { #category : #access }
-ValidationAnnouncement >> propAt: aSymbol [
+ValidationNotification >> propAt: aSymbol [
 
 	^ properties at: aSymbol ifAbsent: [ ^ nil ].
 ]
 
 { #category : #accessing }
-ValidationAnnouncement >> properties: props [
+ValidationNotification >> properties: props [
 
 	properties addAll: props asDictionary.
 ]
