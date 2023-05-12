@@ -22,12 +22,12 @@ Object >> issueError: aValidationError withProps: props [
 
 	ValidationSensor announce: (ValidationErrorNotification newForError: aValidationError 
 																		       issuedBy: self
-																		       withProps: (props , ValidationPropsDynVar value)).
+																		       withProps: (props , ValidationContextPropertiesDynVar value)).
 ]
 
 { #category : #'*ValidationNotification-Core' }
 Object >> validationGroup: aString do: aFullBlockClosure [ 
 
-	ValidationPropsDynVar value: { #validationGroup -> 'Validate Entity1' } asDictionary
-								 during: aFullBlockClosure
+	ValidationContextPropertiesDynVar value: { #validationGroup -> 'Validate Entity1' } asDictionary
+								                during: aFullBlockClosure
 ]
