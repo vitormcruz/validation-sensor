@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'tests - support' }
-SimpleValidationObserverTest >> nonErrorValNotification [
+SimpleValidationObserverTest >> nonErrorNotification [
 
 	| mock |
 	
@@ -23,6 +23,15 @@ SimpleValidationObserverTest >> setUp [
 	
 	simpleValidationObserver := TestObserver newRegistered.
 	
+]
+
+{ #category : #tests }
+SimpleValidationObserverTest >> test_auto_registration [
+
+	| registeredObserver |
+	
+	registeredObserver := SimpleErrorValidationObserver newRegistered.
+	self assert: (ValidationSensor observers includes: registeredObserver). 
 ]
 
 { #category : #'tests - error notification' }
@@ -43,9 +52,9 @@ SimpleValidationObserverTest >> test_errors_with_N_error_notification [
 { #category : #tests }
 SimpleValidationObserverTest >> test_errors_with_N_non_error_notification [
 
-	ValidationSensor announce: self nonErrorValNotification.
-	ValidationSensor announce: self nonErrorValNotification.
-	ValidationSensor announce: self nonErrorValNotification.
+	ValidationSensor announce: self nonErrorNotification.
+	ValidationSensor announce: self nonErrorNotification.
+	ValidationSensor announce: self nonErrorNotification.
 	self assert: simpleValidationObserver errors isEmpty
 ]
 
@@ -58,7 +67,7 @@ SimpleValidationObserverTest >> test_errors_with_no_notification [
 { #category : #'tests - error notification' }
 SimpleValidationObserverTest >> test_errors_with_non_error_notification [
 
-	ValidationSensor announce: (self nonErrorValNotification).
+	ValidationSensor announce: (self nonErrorNotification).
 	self assert: simpleValidationObserver errors isEmpty
 ]
 

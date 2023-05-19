@@ -1,6 +1,6 @@
 Class {
 	#name : #TestObserver,
-	#superclass : #SimpleValidationObserver,
+	#superclass : #SimpleErrorValidationObserver,
 	#category : #'ValidationNotification-Tests'
 }
 
