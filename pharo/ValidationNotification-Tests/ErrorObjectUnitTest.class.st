@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 ErrorObjectUnitTest >> test_creationFailed_on_ErrorObject [
 
-	self assert: InvalidObjectHolder new creationFailed.
+	self assert: ErrorObject new creationFailed.
 ]
 
 { #category : #tests }

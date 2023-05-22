@@ -16,7 +16,7 @@ invalidObjectHolder underliyngObject.
 I also play as the object atempted to be created only to signal errors for users that try to use it.
 "
 Class {
-	#name : #InvalidObjectHolder,
+	#name : #ErrorObject,
 	#superclass : #Object,
 	#instVars : [
 		'errors',
@@ -26,48 +26,48 @@ Class {
 }
 
 { #category : #'instance creation' }
-InvalidObjectHolder class >> forObject: anObject withErrors: aCollection [ 
+ErrorObject class >> forObject: anObject withErrors: aCollection [ 
 
 	^ super new invalidObject: anObject; 
 					errors: aCollection.
 ]
 
 { #category : #'as yet unclassified' }
-InvalidObjectHolder >> commaSeparatedErros [
+ErrorObject >> commaSeparatedErros [
 
 	^ ', ' join: (errors collect: #errorMessage)
 ]
 
 { #category : #'as yet unclassified' }
-InvalidObjectHolder >> creationFailed [
+ErrorObject >> creationFailed [
 
 	^ true.
 ]
 
 { #category : #accessing }
-InvalidObjectHolder >> errors [
+ErrorObject >> errors [
 	^ errors clone.
 ]
 
 { #category : #accessor }
-InvalidObjectHolder >> errors: aCollection [ 
+ErrorObject >> errors: aCollection [ 
 
 	errors := aCollection.
 ]
 
 { #category : #'as yet unclassified' }
-InvalidObjectHolder >> failOnCreationFailed [
+ErrorObject >> failOnCreationFailed [
 
 	ValidationError signal: 'Validation failed with errors: ', self commaSeparatedErros
 ]
 
 { #category : #accessing }
-InvalidObjectHolder >> invalidObject [
+ErrorObject >> invalidObject [
 	^ invalidObject
 ]
 
 { #category : #accessors }
-InvalidObjectHolder >> invalidObject: anObject [ 
+ErrorObject >> invalidObject: anObject [ 
 
 	invalidObject := anObject.
 ]

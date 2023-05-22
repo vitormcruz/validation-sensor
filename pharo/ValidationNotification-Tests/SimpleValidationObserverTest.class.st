@@ -77,3 +77,17 @@ SimpleValidationObserverTest >> test_errors_with_one_error_notification [
 	ValidationSensor announce: ValidationErrorNotification new.
 	self assert: simpleValidationObserver errors size equals: 1.
 ]
+
+{ #category : #tests }
+SimpleValidationObserverTest >> test_isValidationSuccessfull_with_error [
+
+
+	self assert: simpleValidationObserver isValidationSuccessful.
+]
+
+{ #category : #tests }
+SimpleValidationObserverTest >> test_isValidationSuccessfull_without_error [
+
+	ValidationSensor announce: ValidationErrorNotification new.
+	self deny: simpleValidationObserver isValidationSuccessful.
+]
