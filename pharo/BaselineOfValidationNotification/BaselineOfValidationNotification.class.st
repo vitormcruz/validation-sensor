@@ -12,7 +12,7 @@ BaselineOfValidationNotification >> baseline: spec [
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
 		
-     spec baseline: 'Mocketry' with: [ spec repository: 'github://dionisiydk/Mocketry:v7.0.1' ].
+     spec baseline: 'Mocketry' with: [ spec repository: 'github://dionisiydk/Mocketry:v7.0.2' ].
 		
 		spec package: 'ValidationNotification-Core'.
 		spec package: 'ValidationNotification-Tests' with: [ spec requires: #('ValidationNotification-Core' 'Mocketry') ].
