@@ -18,6 +18,12 @@ SimpleErrorValidationObserver class >> newRegistered [
 	^ self basicNew initializeRegisteringSelf.
 ]
 
+{ #category : #'as yet unclassified' }
+SimpleErrorValidationObserver >> commaSeparatedErros [
+
+	^ ', ' join: (self errors collect: #errorMessage)
+]
+
 { #category : #accessing }
 SimpleErrorValidationObserver >> errors [
 	"Return all current errors"
@@ -52,7 +58,7 @@ SimpleErrorValidationObserver >> isValidationSuccessful [
 { #category : #testing }
 SimpleErrorValidationObserver >> onValidationError: aBlockClosure [
 
-	self isValidationSuccessful ifFalse: [aBlockClosure cull: self errors].
+	self isValidationSuccessful ifFalse: [ aBlockClosure cull: self errors ].
 
 
 ]
