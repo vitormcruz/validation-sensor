@@ -1,12 +1,12 @@
 Extension { #name : #Object }
 
-{ #category : #'*ValidationNotification-Core' }
+{ #category : #'*ValidationSensor-Core' }
 Object >> issueError: aValidationError [
 
 	self issueError: aValidationError withProps: Dictionary new.
 ]
 
-{ #category : #'*ValidationNotification-Core' }
+{ #category : #'*ValidationSensor-Core' }
 Object >> issueError: aValidationError withProps: props [ 
 
 	ValidationSensor announce: (ValidationErrorNotification newForError: aValidationError 
@@ -14,7 +14,7 @@ Object >> issueError: aValidationError withProps: props [
 																		       withProps: (props , ValidationContextPropertiesDynVar value)).
 ]
 
-{ #category : #'*ValidationNotification-Core' }
+{ #category : #'*ValidationSensor-Core' }
 Object class >> myDefaultValidationObserverClass [
 
 	"Uses by SimpleErrorValidationObserver default. Implement me to customize it 
@@ -24,7 +24,7 @@ Object class >> myDefaultValidationObserverClass [
 	^ SimpleErrorValidationObserver .
 ]
 
-{ #category : #'*ValidationNotification-Core' }
+{ #category : #'*ValidationSensor-Core' }
 Object class >> newValidating: aCreationBlock [
 
 	"Return the new creted object provided by the block if Ok ar raises an error with all the validations errors issueds.
@@ -41,7 +41,7 @@ Object class >> newValidating: aCreationBlock [
 	^ newObject.
 ]
 
-{ #category : #'*ValidationNotification-Core' }
+{ #category : #'*ValidationSensor-Core' }
 Object >> validationGroup: aString do: aFullBlockClosure [ 
 
 	ValidationContextPropertiesDynVar value: { #validationGroup -> 'Validate Entity1' } asDictionary

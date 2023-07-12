@@ -5,7 +5,7 @@ Class {
 		'errorMessage',
 		'issuer'
 	],
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #'instance creation' }

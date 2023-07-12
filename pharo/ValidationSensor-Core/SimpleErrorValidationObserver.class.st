@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'validationNotifications'
 	],
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #'instance creation' }

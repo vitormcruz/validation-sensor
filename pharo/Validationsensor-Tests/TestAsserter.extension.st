@@ -1,6 +1,6 @@
 Extension { #name : #TestAsserter }
 
-{ #category : #'*ValidationNotification-Tests' }
+{ #category : #'*Validationsensor-Tests' }
 TestAsserter >> assertBlock: assertionBlock [
 "Assert that a block value evaluates to true. If not, prints the block code itself in the assertion error description."
 
@@ -12,7 +12,7 @@ TestAsserter >> assertBlock: assertionBlock [
 	self assert: assertionBlock value description: 'Failed to evaluate "', (assertionBlockBody source copyFrom: blockStart to: blockEnd) , '"'.
 ]
 
-{ #category : #'*ValidationNotification-Tests' }
+{ #category : #'*Validationsensor-Tests' }
 TestAsserter >> assertUntilTrue: assertionBlock forAtMost: waitTimeInMiliseconds [
 "For waitTimeInMiliseconds wait until assertion block resolves to true"
 

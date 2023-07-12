@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#properties => WriteOnceSlot'
 	],
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #initialization }

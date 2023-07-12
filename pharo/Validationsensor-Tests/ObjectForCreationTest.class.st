@@ -1,7 +1,7 @@
 Class {
 	#name : #ObjectForCreationTest,
 	#superclass : #ProcessLocalVariable,
-	#category : #'ValidationNotification-Tests'
+	#category : #'Validationsensor-Tests'
 }
 
 { #category : #'instance creation' }

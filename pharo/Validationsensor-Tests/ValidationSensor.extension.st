@@ -1,6 +1,6 @@
 Extension { #name : #ValidationSensor }
 
-{ #category : #'*ValidationNotification-Tests' }
+{ #category : #'*Validationsensor-Tests' }
 ValidationSensor class >> soleInstanceForTest [
 
 	^ soleInstance.

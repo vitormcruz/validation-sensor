@@ -36,7 +36,7 @@ ValidationSensor removeValidationObserver: aValidationObserver
 Class {
 	#name : #ValidationSensor,
 	#superclass : #ProcessLocalVariable,
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #adding }

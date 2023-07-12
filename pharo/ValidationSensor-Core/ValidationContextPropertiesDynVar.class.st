@@ -17,7 +17,7 @@ In this case, I am used in the `validationGroup:do:` to define a context named '
 Class {
 	#name : #ValidationContextPropertiesDynVar,
 	#superclass : #DynamicVariable,
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'validationObserver'
 	],
-	#category : #'ValidationNotification-Tests'
+	#category : #'Validationsensor-Tests'
 }
 
 { #category : #running }

@@ -3,7 +3,7 @@ ValidationObserverTrait
 "
 Trait {
 	#name : #TValidationObserver,
-	#category : #'ValidationNotification-Core'
+	#category : #'ValidationSensor-Core'
 }
 
 { #category : #'announcement handling' }

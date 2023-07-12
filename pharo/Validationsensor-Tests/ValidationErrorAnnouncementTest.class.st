@@ -1,7 +1,7 @@
 Class {
 	#name : #ValidationErrorAnnouncementTest,
 	#superclass : #TestCase,
-	#category : #'ValidationNotification-Tests'
+	#category : #'Validationsensor-Tests'
 }
 
 { #category : #tests }
