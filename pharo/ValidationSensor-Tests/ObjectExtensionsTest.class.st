@@ -1,5 +1,5 @@
 Class {
-	#name : #IssueErrorTest,
+	#name : #ObjectExtensionsTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'validationObserver'
@@ -8,14 +8,33 @@ Class {
 }
 
 { #category : #running }
-IssueErrorTest >> setUp [
+ObjectExtensionsTest >> setUp [
 	super setUp.
 	
 	validationObserver := TestObserver newRegistered.
 ]
 
-{ #category : #tests }
-IssueErrorTest >> test_issue_N_errors [
+{ #category : #'val sensing control test' }
+ObjectExtensionsTest >> test_failOnValidationError [
+
+	| validationSensor |
+	
+	validationSensor := self startValidationSensor.
+	
+	self issueError: 'error message'.
+	self issueError: 'error message2'.
+	self issueError: 'error message3'.
+			
+	self should: [ validationSensor failOnValidationError ] 
+        raise: Error
+		   withMessageText: 'Errors were found:', String cr,
+									  'error message', String cr,
+									  'error message2', String cr,
+									  'error message3'
+]
+
+{ #category : #'issue error tests' }
+ObjectExtensionsTest >> test_issue_N_errors [
 
 	self issueError: 'error message'.
 	self issueError: 'error message2'.
@@ -25,8 +44,8 @@ IssueErrorTest >> test_issue_N_errors [
 		  includesAll:	#('error message' 'error message2' 'error message3')
 ]
 
-{ #category : #tests }
-IssueErrorTest >> test_issue_error [
+{ #category : #'issue error tests' }
+ObjectExtensionsTest >> test_issue_error [
 
 	self issueError: 'error message'.
 	
@@ -34,8 +53,8 @@ IssueErrorTest >> test_issue_error [
 		  includesAll:	#('error message')
 ]
 
-{ #category : #tests }
-IssueErrorTest >> test_issue_error_in_group_validation [
+{ #category : #'issue error tests' }
+ObjectExtensionsTest >> test_issue_error_in_group_validation [
 
 	| errorsFromGroup |
 	
@@ -53,8 +72,8 @@ IssueErrorTest >> test_issue_error_in_group_validation [
 		  includesAll:	#('error message' 'error message2' 'error message3' 'error message4').
 ]
 
-{ #category : #tests }
-IssueErrorTest >> test_issue_error_with_prop [
+{ #category : #'issue error tests' }
+ObjectExtensionsTest >> test_issue_error_with_prop [
 
 	self issueError: 'error message' withProps: { #field->'name' }.
 	
@@ -64,8 +83,8 @@ IssueErrorTest >> test_issue_error_with_prop [
 	self assert: (validationObserver errors first propAt: #field) equals: 'name'.
 ]
 
-{ #category : #tests }
-IssueErrorTest >> test_issue_error_with_props [
+{ #category : #'issue error tests' }
+ObjectExtensionsTest >> test_issue_error_with_props [
 
 	self issueError: 'error message' withProps: { #field->'name'. #ctx1->'something'. #ctx2->'something2' }.
 	
@@ -75,4 +94,19 @@ IssueErrorTest >> test_issue_error_with_props [
 	self assert: (validationObserver errors first propAt: #field) equals: 'name'.
 	self assert: (validationObserver errors first propAt: #ctx1) equals: 'something'.
 	self assert: (validationObserver errors first propAt: #ctx2) equals: 'something2'.
+]
+
+{ #category : #'val sensing control test' }
+ObjectExtensionsTest >> test_start_validation_sensor [
+
+	| validationSensor |
+	
+	validationSensor := self startValidationSensor.
+	
+	self issueError: 'error message'.
+	self issueError: 'error message2'.
+	self issueError: 'error message3'.
+	
+	self assertCollection: (validationObserver errors collect: #errorMessage) 
+		  includesAll:	#('error message' 'error message2' 'error message3')
 ]

@@ -31,6 +31,16 @@ SimpleErrorValidationObserver >> errors [
 	^ validationNotifications clone.
 ]
 
+{ #category : #'error handling' }
+SimpleErrorValidationObserver >> failOnValidationError [
+	
+	self onValidationError: [ :errors | 
+		self error: 'Errors were found:', String cr, 
+						  ((errors collect: #errorMessage) 
+								reduce: [ :err1 :err2 | err1, String cr, err2 ])
+	]
+]
+
 { #category : #'announcement handling' }
 SimpleErrorValidationObserver >> handleValidationAnn: validationAnnouncement [
 

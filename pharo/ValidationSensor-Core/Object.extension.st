@@ -42,6 +42,12 @@ Object class >> newValidating: aCreationBlock [
 ]
 
 { #category : #'*ValidationSensor-Core' }
+Object >> startValidationSensor [
+	
+	^ SimpleErrorValidationObserver newRegistered.	
+]
+
+{ #category : #'*ValidationSensor-Core' }
 Object >> validationGroup: aString do: aFullBlockClosure [ 
 
 	ValidationContextPropertiesDynVar value: { #validationGroup -> 'Validate Entity1' } asDictionary
