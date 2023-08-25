@@ -15,6 +15,12 @@ Object >> issueError: aValidationError withProps: props [
 ]
 
 { #category : #'*ValidationSensor-Core' }
+Object >> issueErrorAndFail: aValidationError [
+
+	[ self issueError: aValidationError withProps: Dictionary new ] failOnValidationError 
+]
+
+{ #category : #'*ValidationSensor-Core' }
 Object class >> myDefaultValidationObserverClass [
 
 	"Uses by SimpleErrorValidationObserver default. Implement me to customize it 
