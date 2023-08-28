@@ -1,2 +1,2 @@
-# st_validation_notification
+# Validation Sensor
 Validation Notification implemented in Pharo Smalltalk
