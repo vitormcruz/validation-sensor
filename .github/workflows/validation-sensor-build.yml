@@ -17,7 +17,7 @@ jobs:
           key: Pharo-local-${{ hashFiles('**/BaselineOfValidationSensor.class.st') }}
           
       - name: Build Validation-Sensor Core
-        run: pharo /opt/pharo/Pharo.image st --save --quit loadForProduction.st;
+        run: pharo /opt/pharo/Pharo.image st --save --quit loadForPipeline.st;
                 
       - name: Save built-production-image
         uses: actions/upload-artifact@v2.2.4
@@ -45,9 +45,6 @@ jobs:
         with:
           name: built-production-image
           path: /opt/pharo/
-
-      - name: Load Tests
-        run: pharo /opt/pharo/Pharo.image st --save --quit loadForTesting.st;
 
       - name: Run Tests of Validation-Sensor
         run: pharo /opt/pharo/Pharo.image test ValidationSensor* --junit-xml-output --fail-on-failure --fail-on-error;
