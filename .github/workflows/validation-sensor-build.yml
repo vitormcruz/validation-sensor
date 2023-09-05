@@ -1,4 +1,4 @@
-name: Payroll ST CI
+name: Validation Sensor CI
 
 on: [push, pull_request, workflow_dispatch]
 
